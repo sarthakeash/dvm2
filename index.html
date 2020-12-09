@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+    
+    
+<head>
+        <title>form</title>
+
+        <style>
+
+
+
+input:invalid{
+  border-color: #900;
+  background-color: #FDD;
+}
+
+input:focus:invalid {
+  outline: none;
+}
+
+
+
+.error{
+  width  : 100%;
+  padding: 0;
+  font-size: 80%;
+  color: white;
+  background-color: #900;
+  border-radius: 0 0 5px 5px;
+
+  box-sizing: border-box;
+
+
+  padding: 0.3em;
+  
+}
+        </style>
+
+</head>
+    
+    <body>
+      
+  
+    <h1>DVM TASK FORM</h1>
+      <h4> All the fields are required </h4>
+    
+    <form id="form" >
+    <div>
+        <label for="name">Name</label><br>
+      
+    <input type="text" required id="name">
+      <span class="error2" ></span>
+    </div>
+    
+      
+    
+    <div>
+    
+    <label for="age">Age</label><br>
+    <input type="number" min="0" required id="age">
+      <span class="error3" ></span>
+    </div>
+    
+    
+    
+    <div>
+    
+    <label for="univ"> University Name</label><br>
+    <input type="text" required id="univ">
+      <span class="error4" ></span></div>
+    
+    
+    <div>
+        <label for="email">Email</label><br> 
+        <input type="email" required id="mail">
+          
+       <span class="error1" ></span>
+        </div>
+    
+    
+    <div> <label for="pswrd"> Password</label><br>
+    <input type="password" required id="pswrd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+    <span class="error5" ></span>
+    <p>Password should be atleast of length 8, with atleast one
+     uppercase letter, onelower case letter, and one number.</p></div>
+    
+    <input type="submit" value="Submit" id="sub" >
+    
+    </form>
+   
+
+
+    <script>
+
+        const name = document.getElementById('name');
+        const nameError = document.querySelector('#name + span.error2');
+        
+        const age = document.getElementById('age');
+        const ageError = document.querySelector('#age + span.error3');
+        
+        const univ = document.getElementById('univ');
+        const univError = document.querySelector('#univ + span.error4');
+        
+        const email = document.getElementById('mail');
+        const emailError = document.querySelector('#mail + span.error1');
+
+        const sub = document.getElementById('sub');
+        const pswrd=document.getElementById('pswrd');
+        
+        
+        
+        
+        name.addEventListener('input', function (event) {
+          
+          if (name.validity.valid) {
+            
+            nameError.innerHTML = ''; 
+            nameError.className = ''; 
+          } else {
+            showError1();
+          }
+        });
+        
+        
+        
+        function showError1() {
+          if(name.validity.valueMissing) {
+            
+            
+            nameError.textContent = '!';
+          } else if(name.validity.typeMismatch) {
+            
+            nameError.textContent = '!';
+          } 
+        
+          nameError.className = 'error';
+        }
+        
+        
+        
+        
+        
+        age.addEventListener('input', function (event) {
+          
+          if (age.validity.valid) {
+            
+            ageError.innerHTML = ''; 
+            ageError.className = ''; 
+          } else {
+            showError2();
+          }
+        });
+        
+        
+        
+        function showError2() {
+          if(age.validity.valueMissing) {
+            
+            ageError.textContent = ' !';
+          } else if(age.validity.typeMismatch) {
+            
+            ageError.textContent = '!';
+          } 
+        
+          ageError.className = 'error';
+        }
+        
+        
+        
+        univ.addEventListener('input', function (event) {
+          
+          if (univ.validity.valid) {
+            
+            univError.innerHTML = ''; 
+            univError.className = ''; 
+          } else {
+            showError3();
+          }
+        });
+        
+        
+        
+        
+        
+        function showError3() {
+          if(univ.validity.valueMissing) {
+            
+            univError.textContent = '!';
+          } else if(univ.validity.typeMismatch) {
+            
+            univError.textContent = '!';
+          } 
+        
+         univError.className = 'error ';
+        }
+                         
+        
+        
+        
+        email.addEventListener('input', function (event) {
+          
+          if (email.validity.valid) {
+            
+            emailError.innerHTML = ''; 
+            emailError.className = ''; 
+          } else {
+            showError();
+          }
+        });
+        
+        
+        function showError() {
+          if(email.validity.valueMissing) {
+            
+            emailError.textContent = '!';
+          } else if(email.validity.typeMismatch) {
+            
+            emailError.textContent = '!';
+          } 
+        
+          emailError.className = 'error';
+        }
+
+
+        sub.addEventListener('click', function (event) {
+          
+          if (name.validity.valid && email.validity.valid && 
+          univ.validity.valid && age.validity.valid && pswrd.validity.valid)
+           {
+               alert("sucessfully submitted");
+               
+               
+               
+               }}
+          )
+            
+            
+        
+        
+        
+        
+        
+        
+        
+        </script>
+        </body>
+</html>
