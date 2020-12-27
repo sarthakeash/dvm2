@@ -44,6 +44,8 @@ input:focus:invalid {
     <h1>DVM TASK FORM</h1>
       <h4> All the fields are required </h4>
     
+    <div id="details"></div>
+    
     <form id="form" >
     <div>
         <label for="name">Name</label><br>
@@ -84,7 +86,8 @@ input:focus:invalid {
     <p>Password should be atleast of length 8, with atleast one
      uppercase letter, onelower case letter, and one number.</p></div>
     
-    <input type="submit" value="Submit" id="sub" >
+    
+     <input type="button" value="Submit" id="sub" onclick="display()">
     
     </form>
    
@@ -107,7 +110,7 @@ input:focus:invalid {
         const sub = document.getElementById('sub');
         const pswrd=document.getElementById('pswrd');
         
-        
+        const dtls=document.getElementById('details')
         
         
         name.addEventListener('input', function (event) {
@@ -221,27 +224,19 @@ input:focus:invalid {
           emailError.className = 'error';
         }
 
+function display() {
+ 
+  message = "<ul><li><b>Name: </b>" + name.value;
+  message += "<li><b>age: </b>" +    age.value;
+  message += "<li><b>univ: </b>" +  univ.value;
+  message += "<li><b>email: </b>" + email.value;
+  message += "<li><b>pswrd: </b>" + pswrd.value + "</ul>";
+  dtls.innerHTML+= message
+}
+    
 
-        sub.addEventListener('click', function (event) {
-          
-          if (name.validity.valid && email.validity.valid && 
-          univ.validity.valid && age.validity.valid && pswrd.validity.valid)
-           {
-               alert("sucessfully submitted");
-               
-               
-               
-               }}
-          )
-            
-            
-        
-        
-        
-        
-        
-        
-        
-        </script>
+
+
+</script>
         </body>
 </html>
